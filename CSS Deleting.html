@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>CSS Loader Animations</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  body {
+    background-color: #000;
+  }
+
+  .loader {
+    top: 200px;
+    margin-left: 50%;
+    margin-right: auto;
+    position: relative;
+    background-image: linear-gradient(to right, #e52d27 0%, #b31217 51%, #e52d27 100%);
+    width: 160px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #eee;
+    display: block;
+    border: none;
+  }
+
+  .loader:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .loader i {
+    margin-right: 8px;
+  }
+
+  .loader:before {
+    content: "";
+    width: 70px;
+    height: 80px;
+    background: linear-gradient(45deg, #fff 0%, #fecfef 99%, #fecfef 100%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% + 6px);
+    animation: loadPaper 4s ease-in infinite;
+    border-radius: 6px 6px 0 0;
+  }
+
+  .loader:after {
+    content: "";
+    width: 70px;
+    height: 80px;
+    background: linear-gradient(to right, #fff 50%, #0000 51%);
+    background-size: 9px 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% + 6px);
+    animation: disposePaper 4s ease-in infinite;
+    border-radius: 0 0 6px 6px;
+  }
+
+  @keyframes loadPaper {
+    0%, 10% {
+      height: 80px;
+      bottom: calc(100% + 40px);
+    }
+    50% {
+      height: 80px;
+      bottom: calc(100% + 6px);
+    }
+    75%, 100% {
+      height: 0px;
+      bottom: calc(100% + 6px);
+    }
+  }
+
+  @keyframes disposePaper {
+    0%, 50% {
+      height: 0px;
+      top: calc(100% + 6px);
+    }
+    75% {
+      height: 80px;
+      top: calc(100% + 6px);
+      opacity: 1;
+    }
+    100% {
+      height: 80px;
+      top: calc(100% + 40px);
+      opacity: 0;
+    }
+  }
+
+  span {
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+  <span class="loader"><i class="fa fa-trash"></i> Delete</span>
+</body>
+</html>
