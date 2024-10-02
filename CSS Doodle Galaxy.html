@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Galaxy Animation</title>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.40.1/css-doodle.min.js" integrity="sha512-l805pD0CuV0WAq/KNyT5xOIAKuftg42rGdt4fXWBk4NAd9wPwyMu52HTD/9fAV82uHg+DdfXmb6vk3bbL2tDNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+</head>
+<style>
+
+body{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    background:#000;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+<body>
+<css-doodle>
+    :doodle{
+        @grid:500x1/100vmin;
+        perspective:20vmin
+    }
+
+@place-cell:center;
+@size:40% 1px;
+
+will-change: transform, opacity;
+transform-style: preserve-3d;
+
+background: linear-gradient(to left, @multi(@p([2-4]), @p(red,white,white,blue)), transparent @r(50%));
+
+animation:move @r(1s,4s, 0.01s) linear infinite;
+animation-delay: -@r(1s,2s);
+
+--trans:
+translateX(50%)
+rotateX(@r(-180deg,180deg))
+rotateY(@r(-180deg,180deg))
+rotateZ(@r(-180deg,180deg));
+
+
+transform-origin:0 center;
+transform: var(--trans) scale(0);
+opacity: 0.85;
+
+@keyframes move{
+    20% {
+        opacity:1
+    }
+    100%{
+        transform: var(--trans) scale(6);
+    }
+}
+
+</css-doodle>
+</body>
+</html>
